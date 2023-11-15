@@ -12,9 +12,9 @@ sudo su -
 cd /var/www
 # download the latest Heimdall release, download links listed here: https://github.com/linuxserver/Heimdall/releases
 wget https://github.com/linuxserver/Heimdall/archive/refs/tags/V2.5.8.tar.gz
-tar zxvf v2.4.13.tar.gz
-mv Heimdall-2.4.13 heimdall
-chown -R www-data.www-data heimdall
+tar zxvf V2.5.8.tar.gz
+mv Heimdall-2.5.8 heimdall
+chown -R www-data:www-data heimdall
 # If you are proficient in configuring nginx, here is a sample conf that could be put in /etc/nginx/sites-available/heimdall (and then later enabled)...
 cd /etc/nginx/sites-enabled
 nano ../sites-available/heimdall
