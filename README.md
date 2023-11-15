@@ -11,9 +11,9 @@ sudo apt install php-sqlite3 php-bcmath php-json php-xml php-fpm php-mbstring ph
 sudo su -
 cd /var/www
 # download the latest Heimdall release, download links listed here: https://github.com/linuxserver/Heimdall/releases
-wget https://github.com/linuxserver/Heimdall/archive/refs/tags/V2.5.8.tar.gz
-tar zxvf V2.5.8.tar.gz
-mv Heimdall-2.5.8 heimdall
+wget https://github.com/linuxserver/Heimdall/archive/refs/tags/v2.5.6.tar.gz
+tar zxvf v2.5.6.tar.gz
+mv Heimdall-2.5.6 heimdall
 chown -R www-data:www-data heimdall (or nginx:nginx)
 # If you are proficient in configuring nginx, here is a sample conf that could be put in /etc/nginx/sites-available/heimdall (and then later enabled)...
 cd /etc/nginx/sites-enabled
