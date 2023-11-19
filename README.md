@@ -1,25 +1,29 @@
 # blog
 
-# Heimdall behind nginx, on Debian 12 - no Docker
-As seen in :
+## Heimdall behind nginx, on Debian 12 - no Docker
 
-https://www.youtube.com/watch?v=e99YQU8rzos
-
-I installed Heimdall v2. in Debian 12:
-
+- **Install php** 
+```
 sudo apt install php-sqlite3 php-bcmath php-json php-xml php-fpm php-mbstring php-gd php-common php-zip
+```
+- **Download the latest Heimdall release, download links listed here: https://github.com/linuxserver/Heimdall/releases**
+```
 sudo su -
 cd /var/www
-# download the latest Heimdall release, download links listed here: https://github.com/linuxserver/Heimdall/releases
 wget https://github.com/linuxserver/Heimdall/archive/refs/tags/v2.5.6.tar.gz
 tar zxvf v2.5.6.tar.gz
 mv Heimdall-2.5.6 heimdall
 chown -R www-data:www-data heimdall (or nginx:nginx)
-# If you are proficient in configuring nginx, here is a sample conf that could be put in /etc/nginx/sites-available/heimdall (and then later enabled)...
+```
+- **Configuring nginx, here is a sample conf that could be put in /etc/nginx/sites-available/heimdall (and then later enabled)**
+
+Edit the nginx config file
+```
 cd /etc/nginx/sites-enabled
 nano ../sites-available/heimdall.conf
-
-
+```
+Paste into heimdall.conf the following code :
+```
 server {
     listen 443 ssl;
     http2 on;
@@ -52,9 +56,13 @@ server {
        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
     }
 }
+```
 
-Edit nano /etc/php/7.4/fpm/pool.d/www.conf to change user and group:
-listen.owner = nginx
-listen.group = nginx
+Edit fpm autorizations : 
+```
+nano /etc/php/7.4/fpm/pool.d/www.conf to change user and group:
+
+listen.owner = nginx or www-data
+listen.group = nginx or www-data
 ;listen.mode = 0660
-
+```
